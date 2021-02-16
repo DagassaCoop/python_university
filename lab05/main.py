@@ -44,27 +44,40 @@ def task2_a():
 def task2_b():
     str = 'МАТИ МОЄЇ ПОДРУГИ ЦІКАВИТЬСЯ ЛИШЕ СПОРТОМ ТА ЦІНАМИ НА НОВІ БУДИНКИ, ДИВНА ЖІНКА'
     arrConsonants = ['в', 'м', 'н', 'л', 'р', 'й', 'б', 'г', 'д', 'ж', 'з', 'п', 'х', 'к', 'т', 'ш', 'с', 'ч', 'ц', 'ф'] # массив согласных
-    arrVowels = ['а', 'о', 'у', 'е', 'и', 'і'] # массив гласных
+    arrVowels = ['а', 'о', 'у', 'е', 'и', 'і','ї','є'] # массив гласных
     listStr = re.findall('\w+',str)
     N = len(listStr)
     i = 0
-    print(listStr)
-    # for i in range(N):
-    #     simbol = str[i]
-    #     j = 0
-    #     numConsontants = 0
-    #     numVowels = 0
-    #     for j in range(len(arrConsonants)):
-    #         if simbol == arrConsonants[j]:
-    #             numConsontants = numConsontants + 1
-    #         j=j+1
-    #     j = 0
-    #     for j in range(len(arrVowels)):
-    #         if simbol == arrVowels[j]:
-    #             numVowels = numVowels + 1
-    #         j=j+1
-    #     i=i+1
-
+    for i in range(N):
+        M = len(listStr[i])
+        j = 0
+        numConsontants = 0
+        numVowels = 0
+        for j in range(M):
+            t = 0
+            simbol = listStr[i][j].lower()
+            for t in range(len(arrConsonants)):
+                if simbol == arrConsonants[t]:
+                    numConsontants = numConsontants + 1
+                    break
+                t=t+1
+            t = 0
+            for t in range(len(arrVowels)):
+                if simbol == arrVowels[t]:
+                    numVowels = numVowels + 1
+                    break
+                t=t+1
+            j=j+1
+        # print("Количество гласных: ")
+        # print(numVowels)
+        # print("Количество согласных: ")
+        # print(numConsontants)
+        if numConsontants > numVowels:
+            listStr[i] = listStr[i].lower()
+        i=i+1
+    print('Дано: ' + str)
+    str = ' '.join(listStr)
+    print('Результат: ' + str)
 
 
 # task 1
@@ -75,4 +88,3 @@ def task2_b():
 
 #task 2 (b)
 task2_b()
-
