@@ -12,11 +12,13 @@ def task1():
     i = 0
     for i in range(N):
         simbol = newStr[i]
-        i=i+1
         numbInStr = newStr.count(simbol)
-        if numbInStr == 1:
-            print(simbol)
-    print('\n'+newStr)
+        if numbInStr > 1:
+            if i == newStr.find(simbol):
+                print(simbol)
+        i=i+1
+
+    # print('\n'+newStr)
 
 
 def task2_a():
@@ -81,10 +83,10 @@ def task2_b():
 
 
 # task 1
-# task1()
+task1()
 
 # task 2 (a)
-# task2_a()
+task2_a()
 
 #task 2 (b)
 task2_b()

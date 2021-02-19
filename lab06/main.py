@@ -1,4 +1,4 @@
-def queckSort(arr):
+def quackSort(arr):
     """Фунція для швидкого сортування.
 
 
@@ -55,7 +55,7 @@ def findMinN(arr,num):
     finish_arr (list): Масив, що містить найменші числа.
 
     """
-    new_arr = queckSort(arr)
+    new_arr = quackSort(arr)
     finish_arr = []
     i = 0
     for i in range(num):
@@ -76,7 +76,7 @@ def findMaxN(arr,num):
     finish_arr (list): Масив, що містить найбільші числа.
 
     """
-    new_arr = queckSort(arr)
+    new_arr = quackSort(arr)
     finish_arr = []
     i = -1
     while i >= -num:
@@ -129,11 +129,11 @@ def onlyOne(arr):
     return new_arr
 
 arr = [1,3,2,4,6,3,8,1]
-print("Start arrey:")
+print("Start array:")
 print(arr)
 
-new_arr = queckSort(arr) # task 1.1
-print('Result "queckSort":')
+new_arr = quackSort(arr) # task 1.1
+print('Result "quackSort":')
 print(new_arr)
 
 value = valueSearch(arr,3) # task 1.2
@@ -156,7 +156,7 @@ new_arr = onlyOne(arr) # task 1.6
 print('Result "findAverage":')
 print(new_arr)
 
-help(queckSort)
+help(quackSort)
 help(valueSearch)
 help(findMinN)
 help(findMaxN)
