@@ -112,15 +112,15 @@ def test1():
 def test2():
     return None
 
-# print(say_hi("Dima","Student"))
-# test2()
-# test1()
-# test2()
-# print(REGISTERED)
+print(say_hi("Dima","Student"))
+test2()
+test1()
+test2()
+print(REGISTERED)
 
-help(decorator_datatime)
-help(decorator_datatime(test1))
-help(decorator_registered)
-help(decorator_registered(test1))
-help(decorator_probabilities)
-help(decorator_probabilities(test1))
+# help(decorator_datatime)
+# help(decorator_datatime(test1))
+# help(decorator_registered)
+# help(decorator_registered(test1))
+# help(decorator_probabilities)
+# help(decorator_probabilities(test1))
