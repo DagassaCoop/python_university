@@ -1,11 +1,35 @@
 import os
+import shutil
 
-txt1 = open("./files_dir/txt1.txt",'w')
+txt1_path = "./files_dir/txt1.txt"
+txt2_path = "./files_dir/txt2.txt"
+txt1 = open(txt1_path,'w')
 txt1.write("mother\nfather\n\nson\ndaughter")
 txt1.close()
-txt2 = open("./files_dir/txt2.txt",'w')
+txt2 = open(txt2_path,'w')
 txt2.write("uncle\naunt\n\ngrandfather\ngrandmother")
 txt2.close()
+
+def showFiles(*args):
+    """Функция, что выводит в консоль содержимое файла/файлов
+
+    Аргументы:
+    *args (String): Путь к файлу
+
+    Результат:
+     None (none): Ничего не возвращает, так как выводит информацию в консоль
+    """
+    for arg in args:
+        try:
+            file = open(arg,'r')
+            print(file.read())
+            print('\n')
+        except:
+            file.close()
+            print("File not found or path is incorrect")
+    print('\n')
+
+
 
 def task01(*args):
     """Функция что меняет содержимое местами в двух файлах с помощью файла посредника
@@ -18,44 +42,20 @@ def task01(*args):
 
     """
     try:
-        txt1 = open("./files_dir/txt1.txt",'r')
-        temp = open('./files_dir/temp.txt','w')
-        temp.write(txt1.read())
-        txt1.close()
-        temp.close()
-        filename = os.path.splitext(txt1.name)[0]
-        print("\nRead from " + filename)
-    except IOError:
+        print('Before swap:'+'\n')
+        showFiles(txt1_path,txt2_path)
+        temp_path = shutil.copyfile(txt2_path,"./files_dir/temp.txt")
+        shutil.copyfile(txt1_path,txt2_path)
+        shutil.copyfile(temp_path,txt1_path)
+        print('After swap:'+'\n')
+        showFiles(txt1_path, txt2_path)
+        os.remove(temp_path)
+    except:
         print("File not found or path is incorrect")
     finally:
-        print("__exit_from_file__")
-
-    try:
-        txt2 = open("./files_dir/txt2.txt",'r')
-        txt1 = open("./files_dir/txt1.txt",'w')
-        txt1.write(txt2.read())
-        txt2.close()
-        txt1.close()
-        filename = os.path.splitext(txt2.name)[0]
-        print("\nRead from " + filename)
-    except IOError:
-        print("File not found or path is incorrect")
-    finally:
-        print("__exit_from_file__")
+        print("__Finish__")
 
 
-    try:
-        temp = open("./files_dir/temp.txt",'r')
-        txt2 = open("./files_dir/txt2.txt",'w')
-        txt2.write(temp.read())
-        filename = os.path.splitext(temp.name)[0]
-        print("\nRead from " + filename)
-        temp.close()
-        txt2.close()
-    except IOError:
-        print("File not found or path is incorrect")
-    finally:
-        print("__exit_from_file__")
 
 
 def task02(*args):
@@ -69,38 +69,33 @@ def task02(*args):
 
     """
     try:
-        txt1 = open("./files_dir/txt1.txt",'r')
-        text_txt1 = txt1.readlines()
-        txt1.close()
-        filename = os.path.splitext(txt1.name)[0]
-        print("\nRead from " + filename)
-    except IOError:
+        file1 = open(txt1_path,'r')
+        file2 = open(txt2_path,'r')
+        i = 0
+        while True:
+
+            lineFile1 = file1.readline()
+            lineFile2 = file2.readline()
+
+            if not lineFile1:
+                print("\nExit\n")
+                break
+            else:
+                print("line " + str(i) + " from file1: " + lineFile1)
+                print("line " + str(i) + " from file1: " + lineFile2)
+                if len(lineFile1) != len(lineFile2):
+                    print("Does not match in string: " + str(i)+"\n")
+                    print("\nExit\n")
+                    break
+            i += 1
+    except:
         print("File not found or path is incorrect")
     finally:
-        print("__exit_from_file__")
+        file1.close()
+        file2.close()
 
-    try:
-        txt2 = open("./files_dir/txt2.txt",'r')
-        text_txt2 = txt2.readlines()
-        txt2.close()
-        filename = os.path.splitext(txt2.name)[0]
-        print("\nRead from " + filename)
-    except IOError:
-        print("File not found or path is incorrect")
-    finally:
-        print("__exit_from_file__")
-
-    print(text_txt1)
-    print(text_txt2)
-
-    N = len(text_txt1)
-    i=0
-    for i in range(N):
-        if len(text_txt1[i]) != len(text_txt2[i]):
-            print("Error in line: "+str(i))
-            break
 
 # task01()
 # task02()
-help(task01)
-help(task02)
+# help(task01)
+# help(task02)
