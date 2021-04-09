@@ -96,6 +96,6 @@ def task02(*args):
 
 
 # task01()
-# task02()
+task02()
 # help(task01)
 # help(task02)
