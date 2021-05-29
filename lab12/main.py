@@ -64,6 +64,29 @@ class LibraryWorkerIterator:
         else:
             raise StopIteration
 
+class Iterator:
+
+    def __init__(self, _list):
+        self.list = _list
+
+    def __iter__(self):
+        self.i = 0
+        return self
+
+    def __next__(self):
+        if self.i < len(self.list):
+            res = self.list[self.i]
+            self.i += 1
+            return res
+        else:
+            raise StopIteration
+
+
+class Generator(Iterator):
+    def generate(self, it):
+        for self.it in self.list:
+            yield self.it
+
 class LibraryOwner(LibraryWorker):
     def __init__(self,name: str, old: int):
         super(LibraryOwner, self).__init__(name,old)
@@ -181,6 +204,16 @@ bob = LibraryOwner("Bob",40)
 
 lib = Library("Micko",2000,[bob,ane],True,Location("Kharkiv 4"))
 
-for i in lib: # iterator in class
+# for i in lib: # iterator in class
+#     print(i)
+
+iter = Iterator(lib.workers)
+print('iter: ')
+for i in iter:
+    print(i)
+
+gener = Generator(lib.workers)
+print('generator: ')
+for i in gener.generate(iter):
     print(i)
 

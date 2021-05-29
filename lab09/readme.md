@@ -23,4 +23,35 @@
 
 # Опис Функціональних вимог:
 
+Обраною прикладною областю є бібліотека
+Класс Library приймає: title: str,booksNum: int,workers: list,status: bool,location:Location
+
+Location - це окремий клас який містить адресу бібліотеки;
+Workers - окремий клас, який містить опис людини, що працює в бібліотеці.
+
+В усіх класах реалізовано функції init, str, repr; В класі Library присутня перевірка на тип елементі, як за допомогою перевірки при передачі, так і у самому коді для виводу повідомлень для юзера.
+
+Для запису та зчитування створено два методи: dumpInFile(obj) та loadFromFile() на основі бібліотеки pickle4.
+
+Два розрахункових метода: averageWorkersOld та workersJobDay. Один розраховує середній вік працівників, інший скільки днів кожен робітник працює у місяць при умові, що на кожного робітника приходиться однакова напруга.
+
 # Приклад вхідних даних:
+
+Library: 
+
+    def __init__(self, title: str,booksNum: int,workers: list,status: bool,location:Location):
+    l = Library('Miyago',2000,[ane,bob,elena],True,location) 
+
+Location:
+
+    def __init__(self,street:str):
+        self.street = street
+    location = Location('Bondarevka 14b')
+
+Worker:
+
+    def __init__(self,name,old):
+        self.name = name
+        self.old = old
+    ane = Worker('Ane',21)
+    

@@ -1,1 +1,3 @@
-import pandas as pd
+
+import pandas
+pandas.test()
